@@ -51,7 +51,7 @@ Changelog = "https://github.com/contenox/tool-echo/blob/main/CHANGELOG.md"
 
 [tool.ruff]
 line-length = 88
-select = ["E", "F", "W", "I", "B", "C4", "N", "S", "T", "UP", "ANN", "ARG", "ASYNC", "COM", "DTZ", "EM", "EXE", "FBT", "ICN", "INP", "ISC", "LOG", "NPY", "PD", "PIE", "PL", "PTH", "PYI", "RET", "RSE", "RUF", "SIM", "SLF", "TID", "TRY", "WPS", "YTT"]
+select = ["E", "F", "W", "I", "B", "C4", "N", "S", "T", "UP", "ANN", "ARG", "ASYNC", "COM", "DTZ", "EM", "EXE", "FBT", "ICN", "INP", "ISC", "LOG", "NPY", "PD", "PIE", "PL", "PTH", "PYI", "RET", "RSE", "RUF", "SIM", "SLF", "TID", "TRY", "YTT"]
 ignore = ["E501"]
 
 [tool.mypy]
