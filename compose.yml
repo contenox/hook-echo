@@ -1,0 +1,15 @@
+services:
+  echo-tool:
+    build: .
+    image: ${IMAGE_NAME:-tool-echo}
+    container_name: echo-tool-service
+    ports:
+      - "8000:8000"
+    environment:
+      OTEL_EXPORTER_OTLP_ENDPOINT: ${OTEL_EXPORTER_OTLP_ENDPOINT:-}
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/ready"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 5s

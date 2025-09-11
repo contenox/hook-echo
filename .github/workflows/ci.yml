@@ -1,0 +1,56 @@
+name: CI Pipeline
+
+# This workflow runs on every push to the main branch and on every pull request
+# that targets the main branch.
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint_and_test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+          cache-dependency-path: |
+            pyproject.toml
+
+      - name: Install dependencies
+        run: make install
+
+      - name: Cache Docker layers
+        uses: actions/cache@v4
+        with:
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-buildx-${{ hashFiles('Dockerfile') }}-${{ hashFiles('pyproject.toml') }}
+          restore-keys: |
+            ${{ runner.os }}-buildx-
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Docker image with caching (via Makefile)
+        run: |
+          make build-cached IMAGE_NAME=tool-echo-echo-tool
+
+      - name: Run end-to-end tests
+        run: |
+          make test USE_BUILDX_CACHE=1 IMAGE_NAME=tool-echo-echo-tool
+
+      - name: Run code quality checks
+        run: make quality
+
+      - name: Upload Test Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-report
+          path: test-results.xml

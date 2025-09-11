@@ -1,0 +1,85 @@
+[build-system]
+requires = ["setuptools >= 61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "echo-tool"
+version = "0.1.0"
+description = "A simple echo tool for LLM agents"
+readme = "README.md"
+requires-python = ">=3.12"
+license = "Apache License 2.0"
+license-files = ["LICENSE"]
+keywords = ["echo", "fastapi", "llm", "placeholder", "microservice"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Testing",
+    "Topic :: System :: Monitoring",
+]
+
+dependencies = [
+    "fastapi",
+    "uvicorn[standard]",
+    "pydantic",
+    "pydantic-settings",
+    "opentelemetry-api",
+    "opentelemetry-sdk",
+    "opentelemetry-instrumentation-fastapi",
+    "opentelemetry-exporter-otlp",
+    "prometheus-fastapi-instrumentator",
+    "structlog",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "ruff",
+    "mypy",
+    "pre-commit",
+    "httpx",
+    "bump-my-version",
+]
+
+[project.urls]
+Homepage = "https://github.com/contenox/tool-echo"
+Repository = "https://github.com/contenox/tool-echo"
+Issues = "https://github.com/contenox/tool-echo/issues"
+Changelog = "https://github.com/contenox/tool-echo/blob/main/CHANGELOG.md"
+
+[tool.ruff]
+line-length = 88
+select = ["E", "F", "W", "I", "B", "C4", "N", "S", "T", "UP", "ANN", "ARG", "ASYNC", "COM", "DTZ", "EM", "EXE", "FBT", "ICN", "INP", "ISC", "LOG", "NPY", "PD", "PIE", "PL", "PTH", "PYI", "RET", "RSE", "RUF", "SIM", "SLF", "TID", "TRY", "WPS", "YTT"]
+ignore = ["E501"]
+
+[tool.mypy]
+ignore_missing_imports = true
+check_untyped_defs = true
+disallow_untyped_defs = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+
+[tool.bumpversion]
+current_version = "0.1.0"
+commit = true
+tag = true
+
+[tool.bump-my-version]
+current_version = "0.1.0"
+commit = true
+tag = true
+
+[[tool.bump-my-version.files]]
+filename = "pyproject.toml"
+
+[[tool.bump-my-version.files]]
+filename = "config.py"
+search = 'version="{current_version}"'
+replace = 'version="{new_version}"'
+
+[[tool.bump-my-version.files]]
+filename = "README.md"
+search = "Version: {current_version}"
+replace = "Version: {new_version}"

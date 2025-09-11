@@ -1,0 +1,6 @@
+# This is a configuration file for the Spectral OpenAPI linter.
+# It defines the ruleset to use for validating an openapi.json file.
+
+extends: spectral:oas
+# rules:
+#   oas3-operation-tags: error
