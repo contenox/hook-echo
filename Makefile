@@ -1,4 +1,4 @@
-.PHONY: help build build-cached build-smart up up-debug up-info down logs test lint format check-types quality check-npm install-docs-deps docs-dir generate-openapi generate-docs-html generate-docs-markdown validate-openapi generate-docs check-clean bump-patch bump-minor bump-major release check-venv install clean
+.PHONY: help build build-cached build-smart up up-debug up-info down logs test lint format check-types quality fix check-npm install-docs-deps docs-dir generate-openapi generate-docs-html generate-docs-markdown validate-openapi generate-docs check-clean bump-patch bump-minor bump-major release check-venv install clean
 
 # ====================================================================================
 # VARIABLES
@@ -82,6 +82,10 @@ test: check-venv down wait-for-server
 lint: check-venv
 	@echo "Running linter..."
 	@$(VENV_ACTIVATE) && ruff check .
+
+fix: check-venv
+	@echo "Running linter with auto-fix..."
+	@$(VENV_ACTIVATE) && ruff check . --fix
 
 format: check-venv
 	@echo "Formatting code..."
@@ -201,6 +205,7 @@ help:
 	@echo "  test          Run the end-to-end API tests against a live container (auth enabled)."
 	@echo "  release       Create a new patch release and push it to origin."
 	@echo "  clean         Remove all build artifacts, caches, and the virtual environment."
+	@echo "  fix           Fix linting errors."
 	@echo ""
 	@echo "Docker Commands:"
 	@echo "  build         Build the Docker image for the service."

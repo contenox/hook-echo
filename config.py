@@ -1,5 +1,6 @@
+
 from pydantic_settings import BaseSettings, SettingsConfigDict
-from typing import List, Dict
+
 
 class Settings(BaseSettings):
     """
@@ -9,7 +10,7 @@ class Settings(BaseSettings):
     model_config = SettingsConfigDict(
         env_file='.env',
         env_file_encoding='utf-8',
-        extra='ignore'
+        extra='ignore',
     )
 
     # Application info
@@ -23,8 +24,8 @@ class Settings(BaseSettings):
     CONTACT_EMAIL: str = "support@example.com"
 
     # Servers list
-    SERVERS: List[Dict[str, str]] = [
-        {"url": "http://localhost:8000", "description": "Development Server"}
+    SERVERS: list[dict[str, str]] = [
+        {"url": "http://localhost:8000", "description": "Development Server"},
     ]
 
     # Optional OpenTelemetry collector endpoint (leave empty to disable tracing)
