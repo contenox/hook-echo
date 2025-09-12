@@ -169,6 +169,8 @@ release:
 	git pull origin main
 	git commit --amend --no-edit
 	git push --tags
+	git push
+	@echo "✅ Release pushed to origin."
 
 # ====================================================================================
 # DEVELOPMENT & CLEANUP
