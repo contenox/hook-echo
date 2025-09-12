@@ -91,7 +91,7 @@ tags_metadata = [
 
 app = FastAPI(
     title=settings.APP_NAME,
-    description="A simple echo tool for LLM agents.",
+    description="A echo tool for LLM agents.",
     version=settings.APP_VERSION,
     openapi_tags=tags_metadata,
     contact={
