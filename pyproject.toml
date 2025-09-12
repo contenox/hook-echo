@@ -71,6 +71,11 @@ exclude = [
     "tests/",
 ]
 
+[tool.bumpversion]
+current_version = "0.1.13"
+commit = true
+tag = true
+
 [tool.bump-my-version]
 current_version = "0.1.13"
 commit = true
