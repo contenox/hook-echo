@@ -22,7 +22,7 @@ def setup_logging() -> None:
     structlog.configure(
         processors=[
             structlog.stdlib.add_log_level,
-            structlog.processors.TimeStamper(fmt="iso", utc=True),  # ✅ UTC ISO
+            structlog.processors.TimeStamper(fmt="iso", utc=True),
             structlog.processors.StackInfoRenderer(),
             structlog.processors.format_exc_info,
             structlog.processors.JSONRenderer(),

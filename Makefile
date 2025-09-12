@@ -142,6 +142,12 @@ generate-docs: generate-docs-html generate-docs-markdown validate-openapi
 	@echo "All documentation generated successfully"
 
 # ====================================================================================
+# VERSION INFO
+# ====================================================================================
+version: check-venv
+	@$(VENV_ACTIVATE) && bump-my-version show-bump
+
+# ====================================================================================
 # RELEASE & VERSIONING
 # ====================================================================================
 check-clean:
@@ -154,14 +160,17 @@ check-clean:
 bump-patch: check-venv check-clean quality
 	@echo "Bumping version (patch)..."
 	@$(VENV_ACTIVATE) && bump-my-version bump patch
+	@$(VENV_ACTIVATE) && bump-my-version replace
 
 bump-minor: check-venv check-clean quality
 	@echo "Bumping version (minor)..."
 	@$(VENV_ACTIVATE) && bump-my-version bump minor
+	@$(VENV_ACTIVATE) && bump-my-version replace
 
 bump-major: check-venv check-clean quality
 	@echo "Bumping version (major)..."
 	@$(VENV_ACTIVATE) && bump-my-version bump major
+	@$(VENV_ACTIVATE) && bump-my-version replace
 
 release:
 	@echo "Pushing new release to origin..."
@@ -209,6 +218,7 @@ help:
 	@echo "  release       Create a new patch release and push it to origin."
 	@echo "  clean         Remove all build artifacts, caches, and the virtual environment."
 	@echo "  fix           Fix linting errors."
+	@echo "  version       Show current version from source and latest git tag."
 	@echo ""
 	@echo "Docker Commands:"
 	@echo "  build         Build the Docker image for the service."
