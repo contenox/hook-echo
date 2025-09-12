@@ -52,8 +52,8 @@ jobs:
       - name: Verify documentation version
         run: |
           DOC_VERSION=$(grep '"version":' docs/openapi.json | awk -F '"' '{print $4}')
-          if [ "$DOC_VERSION" != "v${{ steps.vars.outputs.TAG }}" ]; then
-            echo "::error::Documentation version '$DOC_VERSION' does not match tag 'v${{ steps.vars.outputs.TAG }}'."
+          if [ "v$DOC_VERSION" != "${{ steps.vars.outputs.TAG }}" ]; then
+            echo "::error::Documentation version 'v$DOC_VERSION' does not match tag '${{ steps.vars.outputs.TAG }}'."
             exit 1
           fi
 
