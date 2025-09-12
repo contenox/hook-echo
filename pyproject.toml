@@ -71,32 +71,27 @@ exclude = [
     "tests/",
 ]
 
-[tool.bumpversion]
-current_version = "0.1.13"
-commit = true
-tag = true
-
 [tool.bump-my-version]
-current_version = "0.1.0"
+current_version = "0.1.13"
 commit = true
 tag = true
 
 [[tool.bump-my-version.files]]
 filename = "pyproject.toml"
-search = 'version="{current_version}"'
+search = 'version="{*}"'
 replace = 'version="{new_version}"'
 
 [[tool.bump-my-version.files]]
 filename = "echo/config.py"
-search = 'APP_VERSION="{current_version}"'
+search = 'APP_VERSION="{*}"'
 replace = 'APP_VERSION="{new_version}"'
 
 [[tool.bump-my-version.files]]
 filename = "README.md"
-search = "Version: {current_version}"
+search = "Version: {*}"
 replace = "Version: {new_version}"
 
 [[tool.bump-my-version.files]]
 filename = "README.md"
-search = "**Version:** {current_version}"
+search = "**Version:** {*}"
 replace = "**Version:** {new_version}"
