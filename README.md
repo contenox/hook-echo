@@ -2,7 +2,7 @@
 
 A minimal **FastAPI** microservice that simply echoes back its input — perfect for testing, debugging, or serving as a placeholder in larger systems.
 
-**Version:** 0.2.2
+**Version:** 0.2.3
 
 ## 🚀 Quick Start
 
