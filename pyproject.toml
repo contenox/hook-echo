@@ -10,7 +10,7 @@ readme = "README.md"
 requires-python = ">=3.12"
 license = "Apache-2.0"
 license-files = ["LICENSE"]
-keywords = ["echo", "fastapi", "llm", "placeholder", "microservice"]
+keywords = ["echo", "fastapi", "llm", "llm-tools", "placeholder", "microservice"]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
