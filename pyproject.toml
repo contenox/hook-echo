@@ -75,6 +75,7 @@ exclude = [
 current_version = "0.1.13"
 commit = true
 tag = true
+tag_name = "v{new_version}"
 
 [[tool.bump-my-version.files]]
 filename = "pyproject.toml"
