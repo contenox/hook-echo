@@ -164,8 +164,7 @@ bump-major: check-venv check-clean quality
 	@$(VENV_ACTIVATE) && bump-my-version bump major
 
 release: bump-patch generate-docs
-	@echo "Adding docs and pushing new release to origin..."
-	git add docs/
+	@echo "Pushing new release to origin..."
 	git commit --amend --no-edit
 	git push --follow-tags
 
