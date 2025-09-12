@@ -83,8 +83,13 @@ replace = 'version="{new_version}"'
 
 [[tool.bump-my-version.files]]
 filename = "echo/config.py"
-search = 'APP_VERSION="{*}"'
-replace = 'APP_VERSION="{new_version}"'
+search = 'APP_VERSION = "{*}"'
+replace = 'APP_VERSION = "{new_version}"'
+
+[[tool.bump-my-version.files]]
+filename = "echo/config.py"
+search = 'APP_VERSION: str ="{*}"'
+replace = 'APP_VERSION: str ="{new_version}"'
 
 [[tool.bump-my-version.files]]
 filename = "README.md"
