@@ -78,25 +78,25 @@ tag = true
 
 [[tool.bump-my-version.files]]
 filename = "pyproject.toml"
-search = 'version="{*}"'
+search = 'version="{}"'
 replace = 'version="{new_version}"'
 
 [[tool.bump-my-version.files]]
 filename = "echo/config.py"
-search = 'APP_VERSION = "{*}"'
+search = 'APP_VERSION = "{}"'
 replace = 'APP_VERSION = "{new_version}"'
 
 [[tool.bump-my-version.files]]
 filename = "echo/config.py"
-search = 'APP_VERSION: str ="{*}"'
-replace = 'APP_VERSION: str ="{new_version}"'
+search = 'APP_VERSION: str = "{}"'
+replace = 'APP_VERSION: str = "{new_version}"'
 
 [[tool.bump-my-version.files]]
 filename = "README.md"
-search = "Version: {*}"
+search = "Version: {}"
 replace = "Version: {new_version}"
 
 [[tool.bump-my-version.files]]
 filename = "README.md"
-search = "**Version:** {*}"
+search = "**Version:** {}"
 replace = "**Version:** {new_version}"
