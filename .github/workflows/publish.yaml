@@ -38,8 +38,6 @@ jobs:
           tags: |
             ghcr.io/${{ github.repository_owner }}/${{ github.repository }}:${{ steps.vars.outputs.TAG }}
             ghcr.io/${{ github.repository_owner }}/${{ github.repository }}:latest
-          cache-from: type=gha,scope=pip-deps-${{ hashFiles('pyproject.toml') }}
-          cache-to: type=gha,mode=max,scope=pip-deps-${{ hashFiles('pyproject.toml') }}
 
       - name: Set up Node.js for docs
         uses: actions/setup-node@v4
