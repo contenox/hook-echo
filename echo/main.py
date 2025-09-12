@@ -35,15 +35,14 @@ def setup_logging() -> None:
     log_level = settings.LOG_LEVEL.upper()
     logging.basicConfig(level=log_level, format="%(message)s")
 
-    # Override Uvicorn's loggers to use our structured formatter
     for logger_name in ["uvicorn", "uvicorn.access", "uvicorn.error"]:
         logger = logging.getLogger(logger_name)
         logger.setLevel(log_level)
-        logger.handlers.clear()  # Remove default handlers
+        logger.handlers.clear()
         handler = logging.StreamHandler()
-        handler.setFormatter(logging.Formatter("%(message)s"))  # Let structlog handle formatting
+        handler.setFormatter(logging.Formatter("%(message)s"))
         logger.addHandler(handler)
-        logger.propagate = False  # Prevent double logging
+        logger.propagate = False
 
 
 def setup_tracing(app: FastAPI) -> None:
