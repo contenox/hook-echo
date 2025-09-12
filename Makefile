@@ -166,7 +166,7 @@ bump-major: check-venv check-clean quality
 release:
 	@echo "Pushing new release to origin..."
 	git commit --amend --no-edit
-	git push --follow-tags
+	git push --tags
 
 # ====================================================================================
 # DEVELOPMENT & CLEANUP
