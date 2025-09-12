@@ -78,11 +78,6 @@ tag = true
 
 [[tool.bumpversion.files]]
 filename = "./echo/config.py"
-search = 'APP_VERSION = "{current_version}"'
-replace = 'APP_VERSION = "{new_version}"'
-
-[[tool.bumpversion.files]]
-filename = "./echo/config.py"
 search = 'APP_VERSION: str = "{current_version}"'
 replace = 'APP_VERSION: str = "{new_version}"'
 
