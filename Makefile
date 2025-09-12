@@ -146,6 +146,7 @@ generate-docs: generate-docs-html generate-docs-markdown validate-openapi
 # ====================================================================================
 version: check-venv
 	@$(VENV_ACTIVATE) && bump-my-version show-bump
+	@$(VENV_ACTIVATE) && bump-my-version replace
 
 # ====================================================================================
 # RELEASE & VERSIONING
