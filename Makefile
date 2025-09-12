@@ -160,24 +160,19 @@ check-clean:
 
 bump-patch: check-venv check-clean quality
 	@echo "Bumping version (patch)..."
-	@$(VENV_ACTIVATE) && bump-my-version bump patch
-	git tag -a "$(shell $(VENV_ACTIVATE) && bump-my-version show)" -m "Release $(shell $(VENV_ACTIVATE) && bump-my-version show)"
+	$(VENV_ACTIVATE) && bump-my-version bump patch
 
 bump-minor: check-venv check-clean quality
 	@echo "Bumping version (minor)..."
-	@$(VENV_ACTIVATE) && bump-my-version bump minor
-	git tag -a "$(shell $(VENV_ACTIVATE) && bump-my-version show)" -m "Release $(shell $(VENV_ACTIVATE) && bump-my-version show)"
+	$(VENV_ACTIVATE) && bump-my-version bump minor
 
 bump-major: check-venv check-clean quality
 	@echo "Bumping version (major)..."
-	@$(VENV_ACTIVATE) && bump-my-version bump major
-	git tag -a "$(shell $(VENV_ACTIVATE) && bump-my-version show)" -m "Release $(shell $(VENV_ACTIVATE) && bump-my-version show)"
+	$(VENV_ACTIVATE) && bump-my-version bump major
 
 release:
 	@echo "Pushing new release to origin..."
 	git fetch origin
-	git pull origin main
-	git commit --amend --no-edit
 	git push --tags
 	git push
 	@echo "✅ Release pushed to origin."
