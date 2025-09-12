@@ -76,32 +76,22 @@ current_version = "0.2.2"
 commit = true
 tag = true
 
-[tool.bump-my-version]
-current_version = "0.1.13"
-commit = true
-tag = true
-
-[[tool.bump-my-version.files]]
-filename = "pyproject.toml"
-search = 'version = "{current_version}"'
-replace = 'version = "{new_version}"'
-
-[[tool.bump-my-version.files]]
+[[tool.bumpversion.files]]
 filename = "./echo/config.py"
 search = 'APP_VERSION = "{current_version}"'
 replace = 'APP_VERSION = "{new_version}"'
 
-[[tool.bump-my-version.files]]
+[[tool.bumpversion.files]]
 filename = "./echo/config.py"
 search = 'APP_VERSION: str = "{current_version}"'
 replace = 'APP_VERSION: str = "{new_version}"'
 
-[[tool.bump-my-version.files]]
+[[tool.bumpversion.files]]
 filename = "README.md"
 search = "Version: {current_version}"
 replace = "Version: {new_version}"
 
-[[tool.bump-my-version.files]]
+[[tool.bumpversion.files]]
 filename = "README.md"
 search = "**Version:** {current_version}"
 replace = "**Version:** {new_version}"
