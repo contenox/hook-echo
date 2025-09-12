@@ -15,7 +15,7 @@ class Settings(BaseSettings):
 
     # Application info
     APP_NAME: str = "Echo Tool Server"
-    LOG_LEVEL: str = "INFO"
+    LOG_LEVEL: str = "WARN"
     APP_VERSION: str = "0.1.0"
 
     # Contact info

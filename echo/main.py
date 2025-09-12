@@ -3,6 +3,7 @@ from os import environ
 from typing import Any
 
 import structlog
+from config import settings
 from fastapi import FastAPI
 from opentelemetry import trace
 from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import OTLPSpanExporter
@@ -13,8 +14,6 @@ from opentelemetry.sdk.trace.export import BatchSpanProcessor
 from prometheus_fastapi_instrumentator import Instrumentator
 from pydantic import BaseModel
 
-from config import settings
-
 environ['TZ'] = 'UTC'
 
 
@@ -23,7 +22,7 @@ def setup_logging() -> None:
     structlog.configure(
         processors=[
             structlog.stdlib.add_log_level,
-            structlog.processors.TimeStamper(fmt="iso", utc=True),
+            structlog.processors.TimeStamper(fmt="iso", utc=True),  # ✅ UTC ISO
             structlog.processors.StackInfoRenderer(),
             structlog.processors.format_exc_info,
             structlog.processors.JSONRenderer(),
@@ -32,7 +31,19 @@ def setup_logging() -> None:
         wrapper_class=structlog.stdlib.BoundLogger,
         cache_logger_on_first_use=True,
     )
-    logging.basicConfig(format="%(message)s", level=settings.LOG_LEVEL.upper())
+
+    log_level = settings.LOG_LEVEL.upper()
+    logging.basicConfig(level=log_level, format="%(message)s")
+
+    # Override Uvicorn's loggers to use our structured formatter
+    for logger_name in ["uvicorn", "uvicorn.access", "uvicorn.error"]:
+        logger = logging.getLogger(logger_name)
+        logger.setLevel(log_level)
+        logger.handlers.clear()  # Remove default handlers
+        handler = logging.StreamHandler()
+        handler.setFormatter(logging.Formatter("%(message)s"))  # Let structlog handle formatting
+        logger.addHandler(handler)
+        logger.propagate = False  # Prevent double logging
 
 
 def setup_tracing(app: FastAPI) -> None:

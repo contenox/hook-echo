@@ -1,7 +1,0 @@
-pytest
-ruff
-mypy
-pre-commit
-httpx
-bump-my-version
-pytest
