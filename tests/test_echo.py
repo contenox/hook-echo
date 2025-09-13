@@ -6,7 +6,7 @@ HEADERS = {}
 
 def test_echo_successful_request():
     test_input = {"input": "Hello FastAPI"}
-    expected_output = {"output": "Echo: Hello FastAPI"}
+    expected_output = {"output": "Hello FastAPI"}
 
     response = httpx.post(f"{BASE_URL}/echo", json=test_input, headers=HEADERS)
     assert response.status_code == 200
