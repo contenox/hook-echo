@@ -113,7 +113,7 @@ class ToolInput(BaseModel):
 async def echo(payload: ToolInput) -> dict[str, Any]:
     """Echoes back whatever input is given. Useful for testing or placeholder."""
     logger.info("echo.request", input=payload.input)
-    result = f"Echo: {payload.input}"
+    result = f"{payload.input}"
     logger.info("echo.response", output=result)
     return {"output": result}
 
