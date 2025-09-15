@@ -39,11 +39,11 @@ jobs:
 
       - name: Build Docker image with caching (via Makefile)
         run: |
-          make build-cached IMAGE_NAME=tool-echo-echo-tool
+          make build-cached IMAGE_NAME=hook-echo-echo-tool
 
       - name: Run end-to-end tests
         run: |
-          make test USE_BUILDX_CACHE=1 IMAGE_NAME=tool-echo-echo-tool
+          make test USE_BUILDX_CACHE=1 IMAGE_NAME=hook-echo-echo-tool
 
       - name: Run code quality checks
         run: make quality

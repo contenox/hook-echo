@@ -44,9 +44,9 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/contenox/tool-echo"
-Repository = "https://github.com/contenox/tool-echo"
-Issues = "https://github.com/contenox/tool-echo/issues"
+Homepage = "https://github.com/contenox/hook-echo"
+Repository = "https://github.com/contenox/hook-echo"
+Issues = "https://github.com/contenox/hook-echo/issues"
 
 [tool.ruff]
 line-length = 88

@@ -11,7 +11,7 @@ VENV_ACTIVATE = . $(VENV_DIR)/bin/activate
 LOG_LEVEL ?= info
 
 # Default image name, can be overridden for CI
-IMAGE_NAME ?= tool-echo-local
+IMAGE_NAME ?= hook-echo-local
 
 # Default command to run when make is called without arguments
 .DEFAULT_GOAL := help
