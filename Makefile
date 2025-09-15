@@ -3,7 +3,7 @@
 # ====================================================================================
 # VARIABLES
 # ====================================================================================
-SERVICE_NAME = echo-tool
+SERVICE_NAME = echo-hook
 VENV_DIR = .venv
 VENV_ACTIVATE = . $(VENV_DIR)/bin/activate
 
